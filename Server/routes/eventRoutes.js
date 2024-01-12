@@ -80,14 +80,21 @@ router.put("/:id/update",verify,async (req, res) => {
 
 //delete  event
 /********************************************************* */
-router.delete("/:id/delete", verify ,async (req, res) => {
+router.delete("/:id/delete", verify, async (req, res) => {
     const id = req.params.id;
     try {
-        await Event.findByIdAndRemove(id);
+        const deletedEvent = await Event.findByIdAndDelete(id);
+
+        if (!deletedEvent) {
+            return res.status(404).json({ error: "Event not found" });
+        }
+
         res.status(200).json("Event has been deleted");
     } catch (err) {
+        console.error("Error deleting event:", err);
         handleError(err, res);
     }
 });
+
 
 module.exports = router;

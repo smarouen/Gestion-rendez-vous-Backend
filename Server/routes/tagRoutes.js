@@ -43,7 +43,7 @@ router.put("/:id/update",verify,async (req, res) => {
         const updatedTag = await Tag.findByIdAndUpdate(
             id,
             {
-                user:req.body.user,
+
                 name: req.body.name,
                 color: req.body.color,
             },
