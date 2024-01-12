@@ -5,9 +5,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const eventRoute = require('./routes/eventRoutes');
 const verifyAuth = require('./routes/privateRouteVerifyToken');
+const tagRoute = require('./routes/tagRoutes');
 
 //Import Routes 
 const authRoute = require('./routes/auth');
+
 
 dotenv.config();
 
@@ -32,6 +34,8 @@ app.use(bodyParser.json());
 //Route Middlwares
 app.use('/api/user/',authRoute);
 app.use('/api/events',verifyAuth,eventRoute);
+app.use('/api/tags',verifyAuth,tagRoute);
+
 
 
 app.listen(3000 , () => console.log('Server is Up and running '));
