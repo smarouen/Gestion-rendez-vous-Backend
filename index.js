@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const eventRoute = require('./routes/eventRoutes');
 
 //Import Routes 
 const authRoute = require('./routes/auth');
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 
 //Route Middlwares
 app.use('/api/user/',authRoute);
+app.use('/api/events',eventRoute);
 
 
 app.listen(3000 , () => console.log('Server is Up and running '));
