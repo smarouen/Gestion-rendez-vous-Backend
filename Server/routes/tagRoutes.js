@@ -45,7 +45,7 @@ router.post("/add", verify, async (req, res) => {
         const savedTag = await newTag.save();
         res.status(200).json(savedTag);
     } catch (err) {
-        handleEventErrors(err, res);
+        res.status(400).send(err);
     }
 });
 
