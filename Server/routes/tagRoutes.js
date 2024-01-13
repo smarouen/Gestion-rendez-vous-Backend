@@ -6,7 +6,7 @@ const verify = require('./privateRouteVerifyToken');
 
 
 //get all tags
-router.get("/getTag", verify ,async (req, res) => {
+router.get("/getTags", verify ,async (req, res) => {
     try {
         const tags = await Tag.find({});
         res.status(200).json(tags);
@@ -18,7 +18,7 @@ router.get("/getTag", verify ,async (req, res) => {
 
 //get speceif tag 
 /********************************************************* */
-router.get("/:id/show", verify ,async (req, res) => {
+router.get("/:id/getTag", verify ,async (req, res) => {
     const id = req.params.id;
     try {
         const tag = await Tag.findById(id);
