@@ -14,6 +14,21 @@ router.get("/getTag", verify ,async (req, res) => {
         res.status(400).send(err);
     }
 });
+
+
+//get speceif tag 
+/********************************************************* */
+router.get("/:id/show", verify ,async (req, res) => {
+    const id = req.params.id;
+    try {
+        const tag = await Tag.findById(id);
+        res.status(200).json(event);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+
 //Create new Tag 
 router.post("/add", verify, async (req, res) => {
     console.log(req.body);
